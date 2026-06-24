@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "POOSHAN GOUD // CREATIVE DEVELOPER & PROBLEM SOLVER",
+  title: "POOSHAN GOUD",
   description: "Pooshan's portfolio. Inspired by Nike's bold, athletic, high-contrast editorial aesthetic. Built with Next.js and canvas scroll sequence scrubbing.",
 };
 
