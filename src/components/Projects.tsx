@@ -55,8 +55,8 @@ const achievements: Achievement[] = [
     link: "#",
   },
   {
-    title: "GSSoC Contribution",
-    award: "Top 10 Contributor",
+    title: "GRIET Hackathon",
+    award: "Top 5 Finalist",
     link: "#",
   },
 ];
