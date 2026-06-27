@@ -156,30 +156,23 @@ export default function Projects() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {achievements.map((item, idx) => (
-              <div 
-                key={idx} 
-                className="flex items-center justify-between p-8 border border-white/10 bg-black rounded-none group hover:border-[#FF5000] transition-colors duration-300"
-              >
-                <div className="space-y-2">
-                  <span className="font-sans text-[#FF5000] text-[10px] tracking-[0.2em] uppercase font-black">
-                    🏆 {item.award}
-                  </span>
-                  <h3 className="font-display font-normal text-2xl md:text-3xl text-white tracking-tight uppercase leading-none">
-                    {item.title}
-                  </h3>
-                </div>
-                <div>
-                  <a 
-                    href={item.link}
-                    className="inline-block bg-white hover:bg-[#FF5000] text-black hover:text-white font-sans font-black text-[10px] tracking-widest uppercase px-5 py-3 rounded-none transition-all duration-300"
-                  >
-                    Verify »
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+  {achievements.map((item, idx) => (
+    <div
+      key={idx}
+      className="p-10 border border-white/10 bg-black rounded-none text-center group hover:border-[#FF5000] transition-colors duration-300"
+    >
+      <div className="space-y-4">
+        <span className="font-sans text-[#FF5000] text-[10px] tracking-[0.25em] uppercase font-black block">
+          🏆 {item.award}
+        </span>
+
+        <h3 className="font-display font-normal text-3xl md:text-4xl text-white tracking-tight uppercase leading-none">
+          {item.title}
+        </h3>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
     </div>
