@@ -72,14 +72,25 @@ export default function Home() {
         </nav>
 
         {/* Call to action header link */}
-        <div>
-          <a 
-            href="#contact"
-            className="font-sans text-[10px] tracking-[0.15em] uppercase text-black bg-white px-5 py-2.5 hover:bg-[#FF5000] hover:text-white transition-all duration-300 font-black rounded-none border border-white"
-          >
-            Get Started
-          </a>
-        </div>
+        <div className="flex gap-3">
+
+  <a
+    href="/Pooshan-Resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="font-sans text-[10px] tracking-[0.15em] uppercase text-white border border-white/20 px-5 py-2.5 hover:border-[#FF5000] hover:text-[#FF5000] transition-all duration-300 font-black"
+  >
+    Resume
+  </a>
+
+  <a
+    href="#contact"
+    className="font-sans text-[10px] tracking-[0.15em] uppercase text-black bg-white px-5 py-2.5 hover:bg-[#FF5000] hover:text-white transition-all duration-300 font-black border border-white"
+  >
+    Contact
+  </a>
+
+</div>
       </header>
 
       {/* Hero Scroll Canvas Section */}
@@ -140,6 +151,16 @@ export default function Home() {
   </button>
 
 </form>
+<div className="pt-8">
+  <a
+    href="/Pooshan-Resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block border border-white/20 px-10 py-4 uppercase tracking-[0.25em] font-black hover:border-[#FF5000] hover:bg-white/5 transition-all duration-300"
+  >
+    Download Resume
+  </a>
+</div>
         </div>
       </section>
 
@@ -222,6 +243,7 @@ export default function Home() {
               >
                 Twitter
               </a>
+              
             </div>
           </div>
         </div>
