@@ -4,9 +4,33 @@ import { useRef } from "react";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
 import Overlay from "@/components/Overlay";
 import Projects from "@/components/Projects";
+import emailjs from "@emailjs/browser";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  if (!formRef.current) return;
+
+  emailjs
+    .sendForm(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      formRef.current,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+    )
+    .then(() => {
+      alert("Message sent successfully!");
+      formRef.current?.reset();
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Failed to send message.");
+    });
+};
 
   return (
     <main className="relative bg-black w-full min-h-screen text-white select-none selection:bg-[#FF5000] selection:text-white">
@@ -78,14 +102,44 @@ export default function Home() {
             LET'S BUILD SOMETHING GREAT.
           </h2>
           
-          <div className="pt-6">
-            <a 
-              href="mailto:pooshangoudwork@gmail.com"
-              className="inline-block bg-[#FF5000] hover:bg-white text-white hover:text-black font-sans font-black text-xs tracking-widest uppercase px-10 py-5 rounded-none transition-all duration-300 border border-[#FF5000] hover:border-white select-none shadow-[0_0_20px_rgba(255,80,0,0.2)]"
-            >
-              Contact Me
-            </a>
-          </div>
+          <form
+  ref={formRef}
+  onSubmit={sendEmail}
+  className="max-w-xl mx-auto pt-8 space-y-5"
+>
+
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+    className="w-full bg-[#111] border border-white/10 px-5 py-4 text-white placeholder:text-white/40 outline-none focus:border-[#FF5000]"
+  />
+
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required
+    className="w-full bg-[#111] border border-white/10 px-5 py-4 text-white placeholder:text-white/40 outline-none focus:border-[#FF5000]"
+  />
+
+  <textarea
+    name="message"
+    rows={5}
+    placeholder="Your Message"
+    required
+    className="w-full bg-[#111] border border-white/10 px-5 py-4 text-white placeholder:text-white/40 outline-none resize-none focus:border-[#FF5000]"
+  />
+
+  <button
+    type="submit"
+    className="w-full bg-[#FF5000] hover:bg-white hover:text-black text-white py-4 uppercase tracking-[0.25em] font-black transition-all duration-300"
+  >
+    Send Message
+  </button>
+
+</form>
         </div>
       </section>
 
