@@ -1,5 +1,5 @@
 "use client";
-
+import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 
 interface Project {
@@ -8,7 +8,6 @@ interface Project {
   category: string;
   description: string;
   image: string;
-  demoLink: string;
   githubLink: string;
   tags: string[];
 }
@@ -16,33 +15,30 @@ interface Project {
 const projects: Project[] = [
   {
     id: "voxtutor",
-    title: "VoxTutor",
-    category: "AI INTERVIEW PREPARATION PLATFORM",
-    description: "An AI-powered interview preparation platform built with VAPI. Choose from different AI avatar personas to conduct your mock interview — each with unique speaking styles and personalities. Get real-time voice feedback and performance analytics.",
-    image: "/projects/aurelia.png",
-    demoLink: "#",
-    githubLink: "#",
-    tags: ["AI", "VAPI", "Voice", "Interview Prep"],
+    title: "SkinDx",
+    category: "DEEP LEARNING WEB APPLICATION",
+    description: "A deep learning-powered web application that detects skin diseases from uploaded images using CNN models. Built with TensorFlow, Flask, and Streamlit.",
+    githubLink: "https://github.com/Pooshan007/SkinDx",
+    image: "/projects/skin.png",
+    tags: ["AI", "TensorFlow", "CNN", "Healthcare"],
   },
   {
     id: "inevitable",
-    title: "Inevitable",
-    category: "SMART SHOPPING AGGREGATOR",
-    description: "A smart shopping aggregator that compares prices and stock across all major platforms in one search. Features an integrated AI Fashion Stylist that suggests outfits based on prompts and shows real-time availability across marketplaces.",
-    image: "/projects/monza.png",
-    demoLink: "#",
-    githubLink: "#",
-    tags: ["AI", "E-Commerce", "Fashion Tech"],
+    title: "Sales Performance Dashboard",
+    category: "BUSINESS INTELLIGENCE & DATA ANALYTICS",
+    description: "An interactive Power BI dashboard that analyzes sales performance using KPIs, revenue trends, regional insights, product analysis, and customer segmentation. Built with data modeling, DAX measures, and dynamic visualizations to support business decision-making.",
+    githubLink: "https://github.com/Pooshan007/Sales-Performance-Dashboard",
+    image: "/projects/sales.png",
+    tags: ["Power BI", "DAX", "SQL", "Data Analytics"],
   },
   {
     id: "fintrace",
-    title: "FinTrace",
-    category: "INTELLIGENT AML DETECTION SYSTEM",
-    description: "An intelligent money laundering detection system that analyzes financial transaction patterns and flags suspicious activity using machine learning algorithms.",
-    image: "/projects/obsidian.png",
-    demoLink: "#",
-    githubLink: "#",
-    tags: ["FinTech", "ML", "Security"],
+     title: "Lung Cancer Detection",
+  category: "MEDICAL IMAGE ANALYSIS",
+  description:"An ensemble machine learning system combining CNN, Random Forest, XGBoost, and SVC to detect lung cancer from histopathology images.",
+  image: "/projects/lungs.png",
+  githubLink: "#",
+  tags: ["Deep Learning", "CNN", "Medical AI"],
   },
 ];
 
@@ -77,7 +73,7 @@ export default function Projects() {
             ATHLETIC CRAFT // GRID
           </span>
           <h2 className="font-display font-normal text-6xl md:text-8xl text-white uppercase tracking-tighter leading-none select-none">
-            SELECTED PROJECTS
+            PROJECTS
           </h2>
         </div>
 
@@ -89,15 +85,26 @@ export default function Projects() {
               className="flex flex-col border border-white/10 bg-black rounded-none p-6 transition-all duration-300 hover:border-[#FF5000] h-full"
             >
               {/* Product Cover Style Image */}
-              <div className="relative aspect-[16/10] w-full bg-[#111] border border-white/5 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 hover:scale-103 opacity-90 hover:opacity-100"
-                />
-              </div>
+              {/* Project Image */}
+<div className="relative aspect-[16/10] overflow-hidden border border-white/10 rounded-sm group">
+
+  <Image
+    src={project.image}
+    alt={project.title}
+    fill
+    sizes="(max-width: 768px) 100vw, 33vw"
+    className="object-cover transition-all duration-700 group-hover:scale-110"
+  />
+
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition duration-500" />
+
+  {/* Orange border on hover */}
+  <div className="absolute inset-0 border border-[#FF5000]/0 group-hover:border-[#FF5000]/40 transition duration-500" />
+
+</div>
+
+
 
               {/* Specs & Info */}
               <div className="flex-1 flex flex-col justify-between pt-6 space-y-6">
@@ -123,19 +130,16 @@ export default function Projects() {
                 </div>
 
                 {/* Sharp Nike-style Button Pairs */}
-                <div className="pt-6 grid grid-cols-2 gap-4 border-t border-white/10">
-                  <a 
-                    href={project.demoLink}
-                    className="flex justify-center items-center bg-white hover:bg-[#FF5000] text-black hover:text-white transition-all duration-300 font-sans font-black text-[10px] tracking-widest uppercase py-3 rounded-none select-none text-center"
-                  >
-                    Live Demo
-                  </a>
-                  <a 
-                    href={project.githubLink}
-                    className="flex justify-center items-center bg-transparent hover:bg-white/10 border border-white/20 text-white hover:border-white transition-all duration-300 font-sans font-black text-[10px] tracking-widest uppercase py-3 rounded-none select-none text-center"
-                  >
-                    GitHub
-                  </a>
+                <div className="pt-6 border-t border-white/10 flex justify-center">            
+                  <a
+  href={project.githubLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-6 w-full flex items-center justify-center gap-3 border border-white/20 py-4 text-sm uppercase tracking-[0.25em] font-black hover:border-[#FF5000] hover:bg-white/5 transition-all duration-300"
+>
+  <FaGithub className="text-lg" />
+  GitHub
+</a>
                 </div>
               </div>
             </div>
